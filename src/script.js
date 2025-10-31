@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
  
     const messageTextarea = document.getElementById('message-text');
     const showSurpriseButton = document.getElementById('show-surprise');
-    const fullMessage = "My dearest friend, As I sit here thinking about all our memories together, I can't help but smile. From our late-night talks to our spontaneous adventures, you've filled my life with so much joy and laughter. You've been my shoulder to cry on, my partner in crime, and my biggest supporter. On your special day, I want you to know how grateful I am to have you. Happy Birthday to my favorite person in the world! Here's to more wonderful memories, friendship, laughter, and endless love! 💕";
+    const fullMessage = "My dearest friend, As I sit here thinking about all our memories together, I can't help but smile. From our late-night talks to our spontaneous adventures, you've filled my life with so much joy and laughter. You've been my shoulder to cry on, my partner in crime, and my biggest supporter. On your special day, I want you to know how grateful I am to have you. Happy Birthday to my favorite person in the world! Here's to more wonderful memories, friendship, laughter, and endless love! ,Remember that when you any prblm A brother  there for U!✌🏻";
     
     // Helper function for delays
     function delay(ms) {
