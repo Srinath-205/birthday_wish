@@ -88,7 +88,7 @@ body {
 
 
 .bounce-in {
-    animation: bounceIn 1s forwards;
+    animation: bounceIn 4s forwards;
     opacity: 0;
     font-size: 4em;
     color: var(--primary-accent);
