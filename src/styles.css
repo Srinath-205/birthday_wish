@@ -1,0 +1,239 @@
+/* --- Global Variables and Font --- */
+:root {
+    --primary-light: #ffc9e0; /* Very light pink/lavender background */
+    --primary-accent: #ff69b4; /* Hot Pink */
+    --secondary-accent: #8e7cc3; /* Soft Purple */
+    --text-dark: #4a4a4a;
+    --text-light: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-dark);
+    background-color: var(--primary-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+    text-align: center;
+    position: relative;
+ /* Optional background audio */
+}
+#background-music {
+    /* Hide the player controls off-screen */
+    position: absolute;
+    top: -9999px; 
+    left: -9999px;
+    visibility: hidden;
+}
+
+/* --- Confetti/Dot Background Animation --- */
+#confetti-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Pseudo-element to create the moving dots/confetti */
+#confetti-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%; /* Larger area for movement */
+    height: 200%;
+    background: radial-gradient(circle, var(--primary-accent) 10%, transparent 10%),
+                radial-gradient(circle, var(--secondary-accent) 10%, transparent 10%);
+    background-size: 80px 80px; /* Size of the repeating pattern */
+    animation: confetti-move 60s linear infinite;
+}
+
+@keyframes confetti-move {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-50%, -50%); } /* Slowly drift across the background */
+}
+
+/* --- General Layout and Animations --- */
+.full-screen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.content-box {
+    padding: 40px 20px;
+    margin: 40px auto;
+    max-width: 900px;
+    /* background-color: rgba(255, 255, 255, 0.9); White translucent box */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    background: linear-gradient(-45deg, #dddd6f, #e4c08a, #56b4a6, #22d9e6);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+
+.bounce-in {
+    animation: bounceIn 1s forwards;
+    opacity: 0;
+    font-size: 4em;
+    color: var(--primary-accent);
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    80% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+.call-to-action {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    background-color: var(--primary-accent);
+    color: var(--text-light);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+}
+.call-to-action:hover {
+    background-color: #e34c9c;
+    transform: translateY(-2px);
+}
+
+
+.slideshow-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 30px;
+}
+
+.photo-display {
+    position: relative;
+    width: 300px;
+    height: 400px;
+}
+
+.slideshow-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    transform: scale(0.95);
+}
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+.slideshow-photo.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 10;
+}
+
+.text-overlay-box {
+    width: 350px;
+    padding: 20px;
+    background-color: var(--primary-light);
+    border-radius: 10px;
+    border: 2px solid var(--secondary-accent);
+    text-align: left;
+    height: 250px; /* Fixed height for consistent look */
+    box-shadow: 0 5px 15px var(--shadow-color);
+    position: relative;
+}
+
+.slide-text {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.slide-text.active {
+    opacity: 1;
+}
+
+.slideshow-controls {
+    margin-top: 20px;
+}
+.slideshow-controls button {
+    background: none;
+    border: 2px solid var(--secondary-accent);
+    color: var(--secondary-accent);
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+.slideshow-controls button:hover {
+    background-color: var(--secondary-accent);
+    color: var(--text-light);
+}
+
+/* --- Message Box / Interactive Wish Styling --- */
+.message-area {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#message-text {
+    width: 90%;
+    max-width: 600px;
+    padding: 15px;
+    border: 1px solid var(--primary-accent);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1em;
+    resize: none;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--text-dark);
+}
+
+/* --- Video Section --- */
+#birthday-video {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+#celebration-video {
+    max-width: 90%;
+    margin-top: 20px;
+    border: 5px solid var(--primary-accent);
+    border-radius: 12px;
+}
+#background-music {
+    /* Hide the player controls off-screen */
+    position: absolute;
+    top: -9999px; 
+    left: -9999px;
+    visibility: hidden;
+}
